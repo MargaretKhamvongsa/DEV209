@@ -7,6 +7,11 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+/* Define the accent color */
+:root {
+    --accent-color: #C8A2C8; /* Lilac color */
+}
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -31,6 +36,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+	color: var(--accent-color);
 }
 
 ol, ul {
@@ -98,7 +104,6 @@ input, select, textarea {
 		}
 
 	body, input, select, textarea {
-		color: #a2a2a2;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
@@ -111,13 +116,13 @@ input, select, textarea {
 		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: #49bf9d;
+		color: var(--accent-color);
 		text-decoration: none;
 	}
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #49bf9d !important;
+			color: var(--accent-color) !important;
 			text-decoration: none;
 		}
 
@@ -135,7 +140,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #787878;
+		color: var(--accent-color);
 		font-weight: 400;
 		line-height: 1em;
 		margin: 0 0 1em 0;
@@ -2460,21 +2465,18 @@ input, select, textarea {
 		white-space: nowrap;
 	}
 
-		input[type="submit"]:hover,
-		input[type="reset"]:hover,
-		input[type="button"]:hover,
-		.button:hover {
-			border-color: #49bf9d;
-			color: #49bf9d !important;
+		input[type="submit"],
+		input[type="reset"],
+		input[type="button"] {
+			background-color: var(--accent-color);
+			border-color: var(--accent-color);
+			color: #fff;
 		}
 
-		input[type="submit"]:active,
-		input[type="reset"]:active,
-		input[type="button"]:active,
-		.button:active {
-			background-color: rgba(73, 191, 157, 0.1);
-			border-color: #49bf9d;
-			color: #49bf9d !important;
+		input[type="submit"]:hover,
+		input[type="reset"]:hover,
+		input[type="button"]:hover {
+			background-color: #b08fb0; /* Slightly darker lilac for hover effect */
 		}
 
 		input[type="submit"].icon,
