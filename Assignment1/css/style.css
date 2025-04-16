@@ -23,6 +23,16 @@
 
 /* General styles */
 body {
+	display: flex;
+	/* Use flexbox for layout */
+	flex-direction: row;
+	/* Arrange header and main content side by side */
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	/* Ensure the layout takes up the full viewport height */
+	overflow: hidden;
+	/* Prevent scrolling issues */
 	background-color: var(--background-color);
 	/* Dark grey */
 	background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg") !important;
@@ -32,8 +42,6 @@ body {
 	color: var(--text-color);
 	font-family: "Source Sans Pro", sans-serif;
 	line-height: 1.75em;
-	margin: 0;
-	padding: 0;
 }
 
 a {
@@ -62,22 +70,22 @@ article {
 
 /* Header */
 #header {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	justify-content: space-between;
+	flex: 0 0 35%;
+	/* Allow the header to take up 35% of the width */
+	max-width: 35%;
+	/* Prevent it from growing beyond 35% */
+	min-width: 20%;
+	/* Allow it to shrink to 20% if needed */
 	background-color: var(--background-color);
 	/* Dark grey */
 	color: rgba(255, 255, 255, 0.5);
-	height: 100%;
-	left: 0;
 	padding: 8em 4em;
-	position: fixed;
+	position: relative;
+	/* Ensure it stays in the document flow */
 	text-align: right;
-	top: 0;
-	width: 35%;
-	z-index: 10;
-	/* Ensure it stays above other elements */
+	overflow-y: auto;
+	/* Add scrolling if the content overflows */
+	box-sizing: border-box;
 }
 
 #header h1 {
@@ -151,10 +159,8 @@ article {
 
 /* Main */
 #main {
-	margin-left: 35%;
-	/* Matches the width of the fixed #header */
-	width: 65%;
-	/* Ensures it fills the rest of the page */
+	flex: 1;
+	/* Allow the main content to take up the remaining space */
 	padding: 4em 2em;
 	/* Adjust padding for better spacing */
 	color: var(--text-color);
@@ -163,10 +169,10 @@ article {
 	/* No white background */
 	box-sizing: border-box;
 	/* Ensures padding doesn’t affect width */
+	overflow-y: auto;
+	/* Add scrolling if the content overflows */
 	position: relative;
 	/* Ensure it stays in the document flow */
-	overflow: visible;
-	/* Prevent content from being clipped */
 }
 
 #main>section {
@@ -184,23 +190,30 @@ article {
 
 /* Two-column layout for rows */
 .row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 2em;
-	/* Space between columns */
-	margin-bottom: 2em;
-	/* Space between rows */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em; /* Space between columns */
+    margin-bottom: 2em; /* Space between rows */
 }
 
 .row .col-6 {
-	flex: 1 1 calc(50% - 2em);
-	/* Two columns with space between */
-	box-sizing: border-box;
+    flex: 1 1 calc(50% - 2em); /* Two columns with space between */
+    box-sizing: border-box;
 }
 
 .row .col-12 {
-	flex: 1 1 100%;
-	/* Full-width for single-column content */
+    flex: 1 1 100%; /* Full-width for single-column content */
+}
+
+/* Stack columns vertically on smaller screens */
+@media screen and (max-width: 768px) {
+    .row {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .row .col-6 {
+        flex: 1 1 100%; /* Full-width for each column */
+    }
 }
 
 /* Buttons */
