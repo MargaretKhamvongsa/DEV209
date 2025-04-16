@@ -2,113 +2,87 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic");
 
 /*
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Strata by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 /* Define theme variables */
 :root {
-	--background-color: #1f1815;
-	/* Dark grey */
-	--text-color: #ffffff;
-	/* White */
-	--accent-color: #C8A2C8;
-	/* Lilac */
-	--secondary-color: #b08fb0;
-	/* Slightly darker lilac */
-	--border-color: #4a4658;
-	/* Darker grey-purple for borders */
+    --background-color: #1f1815; /* Dark grey */
+    --text-color: #ffffff; /* White */
+    --accent-color: #C8A2C8; /* Lilac */
+    --secondary-color: #b08fb0; /* Slightly darker lilac */
+    --border-color: #4a4658; /* Darker grey-purple for borders */
 }
 
 /* General styles */
 body {
-	display: flex;
-	/* Use flexbox for layout */
-	flex-direction: row;
-	/* Arrange header and main content side by side */
-	margin: 0;
-	padding: 0;
-	height: 100vh;
-	/* Ensure the layout takes up the full viewport height */
-	overflow: hidden;
-	/* Prevent scrolling issues */
-	background-color: var(--background-color);
-	/* Dark grey */
-	background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg") !important;
-	background-size: cover !important;
-	background-repeat: no-repeat !important;
-	background-attachment: fixed !important;
-	color: var(--text-color);
-	font-family: "Source Sans Pro", sans-serif;
-	line-height: 1.75em;
+    display: flex;
+    flex-direction: column; /* Stack header, main, and footer vertically */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling issues */
+    background-color: var(--background-color); /* Dark grey */
+    background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    color: var(--text-color);
+    font-family: "Source Sans Pro", sans-serif;
+    line-height: 1.75em;
 }
 
 a {
-	color: var(--accent-color);
-	text-decoration: none;
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
 a:hover {
-	color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 /* Ensure consistent background for all sections and articles */
 section,
 article {
-	background-color: transparent;
-	/* No white background */
-	color: var(--text-color);
-	/* White text */
-	padding: 2em;
-	/* Optional: Adjust padding as needed */
-	margin: 0;
-	/* Remove any default margins */
-	overflow: visible;
-	/* Prevent content from being clipped */
+    background-color: transparent; /* No white background */
+    color: var(--text-color); /* White text */
+    padding: 2em; /* Optional: Adjust padding as needed */
+    margin: 0; /* Remove any default margins */
+    overflow: visible; /* Prevent content from being clipped */
 }
 
 /* Header */
 #header {
-	flex: 0 0 35%;
-	/* Allow the header to take up 35% of the width */
-	max-width: 35%;
-	/* Prevent it from growing beyond 35% */
-	min-width: 20%;
-	/* Allow it to shrink to 20% if needed */
-	background-color: var(--background-color);
-	/* Dark grey */
-	color: rgba(255, 255, 255, 0.5);
-	padding: 8em 4em;
-	position: relative;
-	/* Ensure it stays in the document flow */
-	text-align: right;
-	overflow-y: auto;
-	/* Add scrolling if the content overflows */
-	box-sizing: border-box;
+    flex: 0 0 auto; /* Allow the header to take up only as much space as needed */
+    background-color: var(--background-color); /* Dark grey */
+    color: rgba(255, 255, 255, 0.5);
+    padding: 4em 2em; /* Adjust padding for better spacing */
+    text-align: right;
+    overflow-y: auto; /* Add scrolling if the content overflows */
+    box-sizing: border-box;
 }
 
 #header h1 {
-	color: var(--accent-color);
+    color: var(--accent-color);
 }
 
 #header .image.avatar img {
-	border-radius: 50%;
-	border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
 }
 
 /* Footer */
 #footer {
-	background-color: var(--background-color);
-	/* Dark grey */
-	color: var(--text-color);
-	/* White text */
-	padding: 4em 4em 6em 4em;
-	/* Adjust padding as needed */
-	text-align: center;
-	width: 100%;
-	box-sizing: border-box;
-	/* Ensures padding doesn’t affect width */
+    flex: 0 0 auto; /* Allow the footer to take up only as much space as needed */
+    background-color: var(--background-color); /* Dark grey */
+    color: var(--text-color); /* White text */
+    padding: 2em; /* Adjust padding for better spacing */
+    text-align: center;
+    width: 100%; /* Ensure the footer spans the full width */
+    box-sizing: border-box; /* Include padding in width calculations */
+    margin-top: auto; /* Push the footer to the bottom of the page */
 }
 
 /* Social Media Icons */
@@ -119,6 +93,7 @@ article {
     list-style: none; /* Remove default list styling */
     padding: 0;
     margin: 1em 0;
+    flex-wrap: wrap; /* Allow icons to wrap to the next line if needed */
 }
 
 #footer .icons li {
@@ -136,56 +111,48 @@ article {
 }
 
 #footer .copyright {
-	color: rgba(255, 255, 255, 0.4);
-	font-size: 0.8em;
-	list-style: none;
-	margin: 1em 0 0 0;
-	padding: 0;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8em;
+    list-style: none;
+    margin: 1em 0 0 0;
+    padding: 0;
 }
 
 #footer .copyright li {
-	border-left: solid 1px rgba(255, 255, 255, 0.25);
-	display: inline-block;
-	line-height: 1em;
-	margin-left: 0.75em;
-	padding-left: 0.75em;
+    border-left: solid 1px rgba(255, 255, 255, 0.25);
+    display: inline-block;
+    line-height: 1em;
+    margin-left: 0.75em;
+    padding-left: 0.75em;
 }
 
 #footer .copyright li:first-child {
-	border-left: 0;
-	margin-left: 0;
-	padding-left: 0;
+    border-left: 0;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 /* Main */
 #main {
-	flex: 1;
-	/* Allow the main content to take up the remaining space */
-	padding: 4em 2em;
-	/* Adjust padding for better spacing */
-	color: var(--text-color);
-	/* White text */
-	background-color: transparent;
-	/* No white background */
-	box-sizing: border-box;
-	/* Ensures padding doesn’t affect width */
-	overflow-y: auto;
-	/* Add scrolling if the content overflows */
-	position: relative;
-	/* Ensure it stays in the document flow */
+    flex: 1; /* Allow the main content to take up the remaining space */
+    padding: 4em 2em; /* Adjust padding for better spacing */
+    color: var(--text-color); /* White text */
+    background-color: transparent; /* No white background */
+    box-sizing: border-box; /* Ensures padding doesn’t affect width */
+    overflow-y: auto; /* Add scrolling if the content overflows */
+    position: relative; /* Ensure it stays in the document flow */
 }
 
-#main>section {
-	border-top: solid 2px var(--border-color);
-	/* Darker grey-purple for borders */
-	margin: 4em 0 0 0;
-	padding: 4em 0 0 0;
+#main > section {
+    border-top: solid 2px var(--border-color); /* Darker grey-purple for borders */
+    margin: 4em 0 0 0;
+    padding: 4em 0 0 0;
 }
 
-#main>section:first-child {
-	border-top: 0;
-	margin-top: 0;
-	padding-top: 0;
+#main > section:first-child {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* Two-column layout for rows */
@@ -221,82 +188,68 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 .button {
-	background-color: var(--accent-color);
-	/* Lilac */
-	border: none;
-	color: var(--text-color);
-	/* White */
-	padding: 0.75em 1.5em;
-	border-radius: 0.35em;
-	cursor: pointer;
-	transition: background-color 0.2s ease-in-out;
-	width: auto;
-	/* Ensure the button does not span the container */
-	display: inline-block;
-	/* Prevent it from behaving like a block element */
-	text-align: center;
-	/* Center the text inside the button */
+    background-color: var(--accent-color); /* Lilac */
+    border: none;
+    color: var(--text-color); /* White */
+    padding: 0.75em 1.5em;
+    border-radius: 0.35em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: auto; /* Ensure the button does not span the container */
+    display: inline-block; /* Prevent it from behaving like a block element */
+    text-align: center; /* Center the text inside the button */
 }
 
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
 .button:hover {
-	background-color: var(--secondary-color);
-	/* Slightly darker lilac for hover */
+    background-color: var(--secondary-color); /* Slightly darker lilac for hover */
 }
 
 /* Forms */
 input,
 textarea,
 select {
-	background-color: var(--background-color);
-	/* Dark grey */
-	border: 1px solid var(--border-color);
-	/* Darker grey-purple */
-	color: var(--text-color);
-	/* White text */
-	padding: 0.75em;
-	border-radius: 0.35em;
-	width: 100%;
+    background-color: var(--background-color); /* Dark grey */
+    border: 1px solid var(--border-color); /* Darker grey-purple */
+    color: var(--text-color); /* White text */
+    padding: 0.75em;
+    border-radius: 0.35em;
+    width: 100%;
+    box-sizing: border-box; /* Include padding in width calculations */
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-	border-color: var(--accent-color);
-	/* Lilac for focus */
-	outline: none;
+    border-color: var(--accent-color); /* Lilac for focus */
+    outline: none;
 }
 
 /* Tables */
 table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-bottom: 2em;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em;
 }
 
 table th,
 table td {
-	border: 1px solid var(--border-color);
-	/* Darker grey-purple */
-	padding: 0.75em;
-	text-align: left;
+    border: 1px solid var(--border-color); /* Darker grey-purple */
+    padding: 0.75em;
+    text-align: left;
 }
 
 table th {
-	background-color: var(--border-color);
-	/* Darker grey-purple */
-	color: var(--text-color);
-	/* White text */
+    background-color: var(--border-color); /* Darker grey-purple */
+    color: var(--text-color); /* White text */
 }
 
 table tr:nth-child(even) {
-	background-color: var(--background-color);
-	/* Dark grey */
+    background-color: var(--background-color); /* Dark grey */
 }
 
 table tr:nth-child(odd) {
-	background-color: var(--border-color);
-	/* Darker grey-purple */
+    background-color: var(--border-color); /* Darker grey-purple */
 }
