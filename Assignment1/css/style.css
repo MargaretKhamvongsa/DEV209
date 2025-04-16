@@ -103,12 +103,28 @@ article {
 	/* Ensures padding doesn’t affect width */
 }
 
+/* Social Media Icons */
+#footer .icons {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: center; /* Center the icons horizontally */
+    gap: 2em; /* Add spacing between icons */
+    list-style: none; /* Remove default list styling */
+    padding: 0;
+    margin: 1em 0;
+}
+
+#footer .icons li {
+    display: inline-block; /* Ensure each icon is treated as an inline block */
+}
+
 #footer .icons a {
-	color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4); /* Default icon color */
+    font-size: 1.5em; /* Adjust icon size */
+    transition: color 0.2s ease-in-out; /* Smooth hover effect */
 }
 
 #footer .icons a:hover {
-	color: var(--accent-color);
+    color: var(--accent-color); /* Change to lilac on hover */
 }
 
 #footer .copyright {
@@ -139,8 +155,8 @@ article {
 	/* Matches the width of the fixed #header */
 	width: 65%;
 	/* Ensures it fills the rest of the page */
-	padding: 8em 4em 4em 4em;
-	/* Adjust padding as needed */
+	padding: 4em 2em;
+	/* Adjust padding for better spacing */
 	color: var(--text-color);
 	/* White text */
 	background-color: transparent;
@@ -149,6 +165,8 @@ article {
 	/* Ensures padding doesn’t affect width */
 	position: relative;
 	/* Ensure it stays in the document flow */
+	overflow: visible;
+	/* Prevent content from being clipped */
 }
 
 #main>section {
