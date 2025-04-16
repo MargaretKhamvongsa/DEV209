@@ -56,6 +56,8 @@ article {
 	/* Optional: Adjust padding as needed */
 	margin: 0;
 	/* Remove any default margins */
+	overflow: visible;
+	/* Prevent content from being clipped */
 }
 
 /* Header */
@@ -74,6 +76,8 @@ article {
 	text-align: right;
 	top: 0;
 	width: 35%;
+	z-index: 10;
+	/* Ensure it stays above other elements */
 }
 
 #header h1 {
@@ -143,6 +147,8 @@ article {
 	/* No white background */
 	box-sizing: border-box;
 	/* Ensures padding doesn’t affect width */
+	position: relative;
+	/* Ensure it stays in the document flow */
 }
 
 #main>section {
@@ -156,6 +162,27 @@ article {
 	border-top: 0;
 	margin-top: 0;
 	padding-top: 0;
+}
+
+/* Two-column layout for rows */
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2em;
+	/* Space between columns */
+	margin-bottom: 2em;
+	/* Space between rows */
+}
+
+.row .col-6 {
+	flex: 1 1 calc(50% - 2em);
+	/* Two columns with space between */
+	box-sizing: border-box;
+}
+
+.row .col-12 {
+	flex: 1 1 100%;
+	/* Full-width for single-column content */
 }
 
 /* Buttons */
@@ -172,6 +199,12 @@ input[type="button"],
 	border-radius: 0.35em;
 	cursor: pointer;
 	transition: background-color 0.2s ease-in-out;
+	width: auto;
+	/* Ensure the button does not span the container */
+	display: inline-block;
+	/* Prevent it from behaving like a block element */
+	text-align: center;
+	/* Center the text inside the button */
 }
 
 input[type="submit"]:hover,
