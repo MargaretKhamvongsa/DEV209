@@ -17,7 +17,7 @@
 
 /* General styles */
 body {
-    background-color: #1f1815; /* Dark grey */
+    background-color: var(--background-color); /* Dark grey */
     background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -36,18 +36,21 @@ a:hover {
     color: var(--secondary-color);
 }
 
+/* Ensure consistent background for all sections and articles */
+section, article {
+    background-color: var(--background-color); /* Dark grey */
+    color: var(--text-color); /* White text */
+    padding: 2em; /* Optional: Adjust padding as needed */
+    margin: 0; /* Remove any default margins */
+}
+
 /* Header */
 #header {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
-    background-color: #1f1815;
-    background-attachment: scroll, scroll;
-    background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg");
-    background-position: top left, top left;
-    background-repeat: no-repeat, no-repeat;
-    background-size: cover, cover;
+    background-color: var(--background-color); /* Use the same background color */
     color: rgba(255, 255, 255, 0.5);
     height: 100%;
     left: 0;
@@ -2748,10 +2751,11 @@ input, select, textarea {
 /* Main */
 
 	#main {
-		margin-left: 35%;
-		max-width: 54em;
-		padding: 8em 4em 4em 4em;
-		width: calc(100% - 35%);
+		margin-left: 35%; /* Matches the width of the fixed #header */
+		width: 65%; /* Ensures it fills the rest of the page */
+		padding: 8em 4em 4em 4em; /* Adjust padding as needed */
+		color: var(--text-color);
+		box-sizing: border-box; /* Ensures padding doesn’t affect width */
 	}
 
 		#main > section {
