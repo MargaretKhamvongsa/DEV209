@@ -18,12 +18,9 @@
 
 /* General styles */
 body {
-    display: flex;
-    flex-direction: column; /* Stack header, main, and footer vertically */
     margin: 0;
     padding: 0;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden; /* Prevent scrolling issues */
+    height: 100%; /* Full viewport height */
     background-color: var(--background-color); /* Dark grey */
     background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg") !important;
     background-size: cover !important;
@@ -34,34 +31,22 @@ body {
     line-height: 1.75em;
 }
 
-a {
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--secondary-color);
-}
-
-/* Ensure consistent background for all sections and articles */
-section,
-article {
-    background-color: transparent; /* No white background */
-    color: var(--text-color); /* White text */
-    padding: 2em; /* Optional: Adjust padding as needed */
-    margin: 0; /* Remove any default margins */
-    overflow: visible; /* Prevent content from being clipped */
-}
-
 /* Header */
 #header {
-    flex: 0 0 auto; /* Allow the header to take up only as much space as needed */
+    width: 25%; /* Fixed width for the header */
+    min-width: 20%; /* Allow it to shrink to 20% if needed */
+    float: left; /* Align the header to the left */
+    height: 100vh; /* Make the header span the full height of the viewport */
     background-color: var(--background-color); /* Dark grey */
     color: rgba(255, 255, 255, 0.5);
     padding: 4em 2em; /* Adjust padding for better spacing */
     text-align: right;
     overflow-y: auto; /* Add scrolling if the content overflows */
     box-sizing: border-box;
+    position: fixed; /* Fix the header in place */
+    top: 0; /* Align to the top of the viewport */
+    left: 0; /* Align to the left of the viewport */
+    z-index: 10; /* Ensure it overlays the footer */
 }
 
 #header h1 {
@@ -75,29 +60,27 @@ article {
 
 /* Footer */
 #footer {
-    flex: 0 0 auto; /* Allow the footer to take up only as much space as needed */
+    clear: both; /* Ensure the footer is below both header and main */
     background-color: var(--background-color); /* Dark grey */
     color: var(--text-color); /* White text */
     padding: 2em; /* Adjust padding for better spacing */
     text-align: center;
     width: 100%; /* Ensure the footer spans the full width */
     box-sizing: border-box; /* Include padding in width calculations */
-    margin-top: auto; /* Push the footer to the bottom of the page */
 }
 
 /* Social Media Icons */
 #footer .icons {
-    display: flex; /* Use flexbox for horizontal alignment */
-    justify-content: center; /* Center the icons horizontally */
-    gap: 2em; /* Add spacing between icons */
+    display: inline-block; /* Align icons inline */
+    text-align: center;
     list-style: none; /* Remove default list styling */
     padding: 0;
     margin: 1em 0;
-    flex-wrap: wrap; /* Allow icons to wrap to the next line if needed */
 }
 
 #footer .icons li {
     display: inline-block; /* Ensure each icon is treated as an inline block */
+    margin: 0 1em; /* Add spacing between icons */
 }
 
 #footer .icons a {
@@ -134,7 +117,7 @@ article {
 
 /* Main */
 #main {
-    flex: 1; /* Allow the main content to take up the remaining space */
+    margin-left: 25%; /* Leave space for the header */
     padding: 4em 2em; /* Adjust padding for better spacing */
     color: var(--text-color); /* White text */
     background-color: transparent; /* No white background */
@@ -187,7 +170,8 @@ article {
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-.button {
+.button,
+ul.actions a {
     background-color: var(--accent-color); /* Lilac */
     border: none;
     color: var(--text-color); /* White */
@@ -195,15 +179,16 @@ input[type="button"],
     border-radius: 0.35em;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-    width: auto; /* Ensure the button does not span the container */
     display: inline-block; /* Prevent it from behaving like a block element */
     text-align: center; /* Center the text inside the button */
+    text-decoration: none; /* Remove underline */
 }
 
 input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover,
-.button:hover {
+.button:hover,
+ul.actions a:hover {
     background-color: var(--secondary-color); /* Slightly darker lilac for hover */
 }
 
@@ -252,4 +237,30 @@ table tr:nth-child(even) {
 
 table tr:nth-child(odd) {
     background-color: var(--border-color); /* Darker grey-purple */
+}
+
+/* Remove dots (bullet points) for lists */
+ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* Specific for labeled icons (e.g., Address, Phone, Email) */
+ul.labeled-icons {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+/* Remove dots for buttons inside lists */
+ul.actions {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center the buttons horizontally */
+    padding: 0;
+    margin: 1em 0; /* Add some spacing above and below */
+}
+
+ul.actions li {
+    margin: 0 0.5em; /* Add spacing between buttons */
 }
