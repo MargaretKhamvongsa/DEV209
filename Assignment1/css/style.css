@@ -7,9 +7,70 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* Define the accent color */
+/* Define theme variables */
 :root {
-    --accent-color: #C8A2C8; /* Lilac color */
+    --background-color: #1f1815; /* Dark grey */
+    --text-color: #ffffff; /* White */
+    --accent-color: #C8A2C8; /* Lilac */
+    --secondary-color: #b08fb0; /* Slightly darker lilac */
+}
+
+/* General styles */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: "Source Sans Pro", sans-serif;
+    line-height: 1.75em;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Header */
+#header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    background-color: #1f1815;
+    background-attachment: scroll, scroll;
+    background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg");
+    background-position: top left, top left;
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+    color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    left: 0;
+    padding: 8em 4em;
+    position: fixed;
+    text-align: right;
+    top: 0;
+    width: 35%;
+}
+
+#header h1 {
+	color: var(--accent-color);
+}
+ 
+
+#footer .icons a:hover {
+    color: var(--secondary-color);
+}
+
+/* Keyframes */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 html, body, div, span, applet, object,
@@ -1849,7 +1910,7 @@ input, select, textarea {
 		}
 
 	select {
-		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23dfdfdf' /%3E%3C/svg%3E");
+		background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg");
 		background-size: 1.25rem;
 		background-repeat: no-repeat;
 		background-position: calc(100% - 1rem) center;
@@ -2633,7 +2694,7 @@ input, select, textarea {
 		}
 
 		#header h1 {
-			color: rgba(255, 255, 255, 0.5);
+			color: var(--text-color) !important;
 			font-size: 1.35em;
 			line-height: 1.75em;
 			margin: 0;
