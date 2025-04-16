@@ -17,7 +17,11 @@
 
 /* General styles */
 body {
-    background-color: var(--background-color);
+    background-color: #1f1815; /* Dark grey */
+    background-image: url("https://raw.githubusercontent.com/MargaretKhamvongsa/DEV209/main/Assignment1/images/03.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--text-color);
     font-family: "Source Sans Pro", sans-serif;
     line-height: 1.75em;
@@ -2163,10 +2167,10 @@ input, select, textarea {
 				opacity: 1.0;
 			}
 
-			.image img {
-				border-radius: 0.35em;
-				display: block;
-			}
+				.image img {
+					border-radius: 0.35em;
+					display: block;
+				}
 
 		.image.left {
 			float: left;
