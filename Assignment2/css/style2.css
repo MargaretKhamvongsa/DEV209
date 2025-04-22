@@ -10,17 +10,30 @@ body {
   font-family: 'Outfit', sans-serif;
 }
 
-/* Container Styling */
-.container {
+/* Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px; /* Adjust max-width to accommodate 3 columns */
+  justify-content: center; /* Center the grid items horizontally */
+}
+
+/* Center the last grid item */
+.grid-container .grid-item:last-child {
+  justify-self: center; /* Center the last item horizontally */
+}
+
+.grid-item {
   background: hsl(0, 0%, 100%);
   padding: 20px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 375px;
+  justify-self: center; /* Center individual grid items */
 }
 
-/* QR Code Image */
 .qr-image {
   width: 288px;
   height: 288px;
@@ -40,40 +53,34 @@ p {
   color: hsl(216, 15%, 48%);
 }
 
-/* Attribution */
-.attribution {
-  font-size: 11px;
-  text-align: center;
+/* Remove bullets from unordered lists */
+ul {
+  list-style: none; /* Removes the default bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0 auto; /* Centers the list horizontally */
+  text-align: center; /* Centers the text inside the list */
 }
 
-.attribution a {
-  color: hsl(228, 45%, 44%);
+ul li {
+  display: inline-block; /* Align items inline */
+  margin: 0 10px; /* Add spacing between items */
 }
 
-/* Responsive Layout */
-@media (max-width: 1440px) {
-  body {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 375px) {
-  .container {
-    max-width: 320px;
-    padding: 15px;
-  }
-
-  .qr-image {
-    width: 250px;
-    height: 250px;
-  }
-
-  h2 {
-    font-size: 1.3rem;
-  }
-
-  p {
-    font-size: 14px;
+/* Responsive Layout: Adjust grid for smaller screens */
+@media (max-width: 1000px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Switch to 1 column */
+    justify-content: center; /* Center items horizontally */
   }
 }
 
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Switch to 1 column */
+    justify-content: center; /* Center items horizontally */
+  }
+
+  .grid-container .grid-item:last-child {
+    justify-self: center; /* Center the last item horizontally */
+  }
+}
