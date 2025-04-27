@@ -1,14 +1,22 @@
 const symbols = ['🍎', '🍌', '🍇', '🍊', '🍓', '🍍', '🥝', '🍒'];
 const gameBoard = document.getElementById('game-board');
 const movesDisplay = document.getElementById('moves');
+const timerDisplay = document.getElementById('timer');
+const difficultySelector = document.getElementById('difficulty');
+const startButton = document.getElementById('start-button');
+const stopButton = document.getElementById('stop-button');
 let cards = [];
 let flippedCards = [];
 let moves = 0;
+let timer = 0;
+let timerInterval;
 
 // Initialize game
-function initGame() {
-  const doubledSymbols = [...symbols, ...symbols];
-  shuffledCards = doubledSymbols.sort(() => Math.random() - 0.5);
+function initGame(rows = 4, cols = 4) {
+  resetGame();
+
+  const doubledSymbols = [...symbols, ...symbols].slice(0, rows * cols / 2);
+  const shuffledCards = doubledSymbols.concat(doubledSymbols).sort(() => Math.random() - 0.5);
 
   shuffledCards.forEach((symbol) => {
     const card = document.createElement('div');
@@ -18,6 +26,34 @@ function initGame() {
     gameBoard.appendChild(card);
     cards.push(card);
   });
+
+  gameBoard.style.gridTemplateColumns = `repeat(${cols}, 100px)`;
+}
+
+// Reset game state
+function resetGame() {
+  clearInterval(timerInterval);
+  timer = 0;
+  moves = 0;
+  flippedCards = [];
+  cards = [];
+  gameBoard.innerHTML = '';
+  timerDisplay.textContent = `Time: 0s`;
+  movesDisplay.textContent = `Moves: 0`;
+}
+
+// Start timer
+function startTimer() {
+  timerInterval = setInterval(() => {
+    timer++;
+    timerDisplay.textContent = `Time: ${timer}s`;
+  }, 1000);
+}
+
+// Stop game
+function stopGame() {
+  resetGame();
+  alert('Game stopped.');
 }
 
 // Flip card
@@ -58,12 +94,25 @@ function checkMatch() {
 // Check if game is over
 function checkGameOver() {
   if (cards.every((card) => card.classList.contains('matched'))) {
-    alert(`Game Over! You won in ${moves} moves.`);
+    clearInterval(timerInterval);
+    alert(`Game Over! You won in ${moves} moves and ${timer} seconds.`);
   }
 }
 
-// Functional programming concept (map)
-const shuffleCards = symbols => [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+// Event listener for start button
+startButton.addEventListener('click', () => {
+  const difficulty = difficultySelector.value;
+  let rows, cols;
+  if (difficulty === 'easy') {
+    rows = 3; cols = 4;
+  } else if (difficulty === 'medium') {
+    rows = 4; cols = 4;
+  } else {
+    rows = 6; cols = 6;
+  }
+  initGame(rows, cols);
+  startTimer();
+});
 
-// Start game
-initGame();
+// Event listener for stop button
+stopButton.addEventListener('click', stopGame);
