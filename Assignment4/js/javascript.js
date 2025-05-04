@@ -12,13 +12,19 @@ let timer = sessionStorage.getItem('timer') ? parseInt(sessionStorage.getItem('t
 let timerInterval;
 let totalMoves = localStorage.getItem('totalMoves') ? parseInt(localStorage.getItem('totalMoves')) : 0;
 
-// Load game state from sessionStorage (including layout)
+// Load game state from sessionStorage (including layout & difficulty)
 function loadGameState() {
     const storedBoard = JSON.parse(sessionStorage.getItem('gameBoard'));
     const savedLayout = sessionStorage.getItem('gridColumns');
+    const savedDifficulty = sessionStorage.getItem('difficulty');
+    const savedCardStyle = sessionStorage.getItem('cardStyle');
 
     if (savedLayout) {
         gameBoard.style.gridTemplateColumns = savedLayout;
+    }
+
+    if (savedDifficulty) {
+        difficultySelector.value = savedDifficulty;
     }
 
     if (storedBoard) {
@@ -30,7 +36,7 @@ function loadGameState() {
             if (cardData.flipped) card.classList.add('flipped');
             if (cardData.matched) card.classList.add('matched');
             card.textContent = cardData.flipped ? cardData.symbol : '';
-            card.style.backgroundColor = cardData.backgroundColor || ''; // Restore background
+            card.style.backgroundColor = savedCardStyle || cardData.backgroundColor || ''; // Restore card style
             card.addEventListener('click', flipCard);
             gameBoard.appendChild(card);
             cards.push(card);
@@ -42,7 +48,7 @@ function loadGameState() {
     }
 }
 
-// Save game state to sessionStorage (including layout)
+// Save game state to sessionStorage (including layout, card styles, difficulty)
 function saveGameState() {
     const gameState = cards.map(card => ({
         symbol: card.dataset.symbol,
@@ -54,6 +60,16 @@ function saveGameState() {
     sessionStorage.setItem('moves', moves);
     sessionStorage.setItem('timer', timer);
     sessionStorage.setItem('gridColumns', gameBoard.style.gridTemplateColumns); // Save layout
+}
+
+// Store difficulty setting when changed
+difficultySelector.addEventListener('change', () => {
+    sessionStorage.setItem('difficulty', difficultySelector.value);
+});
+
+// Store card style when a card is clicked
+function saveCardStyle(color) {
+    sessionStorage.setItem('cardStyle', color);
 }
 
 // Initialize game
@@ -112,6 +128,7 @@ function flipCard() {
     this.textContent = this.dataset.symbol;
     this.style.backgroundColor = "#fff"; // Apply background change
     flippedCards.push(this);
+    saveCardStyle("#fff"); // Save card background color
 
     if (flippedCards.length === 2) {
         checkMatch();
