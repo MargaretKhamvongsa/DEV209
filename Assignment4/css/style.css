@@ -1,1 +1,110 @@
+/* General Styles */
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0; /* Remove default margin */
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center;
+}
 
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+#instructions {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  background-color: #3e8e41;
+}
+
+
+#main-container {
+  text-align: center;
+  padding: 20px;
+}
+
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+
+#game-board {
+  display: grid;
+  grid-gap: 15px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: #888;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background-color: #666;
+}
+
+.card.flipped {
+  background-color: #fff;
+  color: #333;
+  cursor: default;
+}
+
+.card.matched {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#timer, #moves {
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 10px;
+}
