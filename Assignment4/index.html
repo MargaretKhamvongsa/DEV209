@@ -1,1 +1,30 @@
-
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="main-container">
+  <h1>Memory Game</h1>
+  <div id="instructions">Match all the cards to win!</div>
+  <label for="difficulty">Select Difficulty:</label>
+  <select id="difficulty">
+    <option value="easy">Easy</option>
+    <option value="medium">Medium</option>
+    <option value="hard">Hard</option>
+  </select>
+  <button id="start-button">Start</button>
+  <button id="stop-button">Stop</button>
+  <div id="game-container">
+    <div id="game-board"></div>
+  </div>
+  <div id="timer">Time: 0s</div>
+  <div id="moves">Moves: 0</div>
+</div>
+  <script src="javascript/javascript.js"></script>
+</body>
+</html>
