@@ -12,9 +12,15 @@ let timer = sessionStorage.getItem('timer') ? parseInt(sessionStorage.getItem('t
 let timerInterval;
 let totalMoves = localStorage.getItem('totalMoves') ? parseInt(localStorage.getItem('totalMoves')) : 0;
 
-// Load game state from sessionStorage
+// Load game state from sessionStorage (including layout)
 function loadGameState() {
     const storedBoard = JSON.parse(sessionStorage.getItem('gameBoard'));
+    const savedLayout = sessionStorage.getItem('gridColumns');
+
+    if (savedLayout) {
+        gameBoard.style.gridTemplateColumns = savedLayout;
+    }
+
     if (storedBoard) {
         gameBoard.innerHTML = '';
         storedBoard.forEach(cardData => {
@@ -24,26 +30,30 @@ function loadGameState() {
             if (cardData.flipped) card.classList.add('flipped');
             if (cardData.matched) card.classList.add('matched');
             card.textContent = cardData.flipped ? cardData.symbol : '';
+            card.style.backgroundColor = cardData.backgroundColor || ''; // Restore background
             card.addEventListener('click', flipCard);
             gameBoard.appendChild(card);
             cards.push(card);
         });
+
         timerDisplay.textContent = `Time: ${timer}s`;
         movesDisplay.textContent = `Moves: ${moves}`;
         startTimer();
     }
 }
 
-// Save game state to sessionStorage
+// Save game state to sessionStorage (including layout)
 function saveGameState() {
     const gameState = cards.map(card => ({
         symbol: card.dataset.symbol,
         flipped: card.classList.contains('flipped'),
-        matched: card.classList.contains('matched')
+        matched: card.classList.contains('matched'),
+        backgroundColor: card.style.backgroundColor // Store background color
     }));
     sessionStorage.setItem('gameBoard', JSON.stringify(gameState));
     sessionStorage.setItem('moves', moves);
     sessionStorage.setItem('timer', timer);
+    sessionStorage.setItem('gridColumns', gameBoard.style.gridTemplateColumns); // Save layout
 }
 
 // Initialize game
@@ -100,6 +110,7 @@ function flipCard() {
 
     this.classList.add('flipped');
     this.textContent = this.dataset.symbol;
+    this.style.backgroundColor = "#fff"; // Apply background change
     flippedCards.push(this);
 
     if (flippedCards.length === 2) {
@@ -129,6 +140,8 @@ function checkMatch() {
             card2.classList.remove('flipped');
             card1.textContent = '';
             card2.textContent = '';
+            card1.style.backgroundColor = ''; // Reset background
+            card2.style.backgroundColor = '';
             flippedCards = [];
             saveGameState();
         }, 1000);
