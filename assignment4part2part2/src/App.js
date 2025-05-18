@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
+import TodoApp from './components/TodoApp';
 import './App.css';
 
 const API_URL = 'http://localhost:3000';
@@ -178,86 +181,28 @@ function App() {
       <Header />
       {showAuth ? (
         <div id="auth">
-          <h2>Register</h2>
-          <form id="registerForm" onSubmit={handleRegister}>
-            <input
-              type="text"
-              id="registerUsername"
-              placeholder="Username"
-              required
-              value={register.username}
-              onChange={e => setRegister({ ...register, username: e.target.value })}
-            />
-            <input
-              type="password"
-              id="registerPassword"
-              placeholder="Password"
-              required
-              value={register.password}
-              onChange={e => setRegister({ ...register, password: e.target.value })}
-            />
-            <button type="submit">Register</button>
-          </form>
-          <h2>Login</h2>
-          <form id="loginForm" onSubmit={handleLogin}>
-            <input
-              type="text"
-              id="loginUsername"
-              placeholder="Username"
-              required
-              value={login.username}
-              onChange={e => setLogin({ ...login, username: e.target.value })}
-            />
-            <input
-              type="password"
-              id="loginPassword"
-              placeholder="Password"
-              required
-              value={login.password}
-              onChange={e => setLogin({ ...login, password: e.target.value })}
-            />
-            <button type="submit">Login</button>
-          </form>
+          <RegisterForm
+            register={register}
+            setRegister={setRegister}
+            handleRegister={handleRegister}
+          />
+          <LoginForm
+            login={login}
+            setLogin={setLogin}
+            handleLogin={handleLogin}
+          />
         </div>
       ) : (
-        <div id="todoApp">
-          <button id="logoutButton" onClick={handleLogout}>Logout</button>
-          <h2>Todo List</h2>
-          <form id="todoForm" onSubmit={handleAddTodo}>
-            <input
-              type="text"
-              id="todoTitle"
-              placeholder="Title"
-              required
-              value={todo.title}
-              onChange={e => setTodo({ ...todo, title: e.target.value })}
-            />
-            <input
-              type="text"
-              id="todoDescription"
-              placeholder="Description"
-              value={todo.description}
-              onChange={e => setTodo({ ...todo, description: e.target.value })}
-            />
-            <button type="submit">Add Todo</button>
-          </form>
-          <ul id="todoList">
-            {todos.map(todo => (
-              <li key={todo.id} className={todo.completed ? 'completed' : ''}>
-                {todo.title} - {todo.description}
-                <button onClick={() => handleToggleComplete(todo.id, todo.completed)}>
-                  {todo.completed ? 'Undo' : 'Complete'}
-                </button>
-                <button onClick={() => handleEditTodo(todo.id, todo.title, todo.description)}>
-                  Edit
-                </button>
-                <button onClick={() => handleDeleteTodo(todo.id)}>
-                  Delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <TodoApp
+          todos={todos}
+          todo={todo}
+          setTodo={setTodo}
+          handleAddTodo={handleAddTodo}
+          handleLogout={handleLogout}
+          handleEditTodo={handleEditTodo}
+          handleDeleteTodo={handleDeleteTodo}
+          handleToggleComplete={handleToggleComplete}
+        />
       )}
     </div>
   );
